@@ -2,8 +2,10 @@
 
 ## Description
 This repository contains the infrastructure and application code required to deploy an API Gateway Endpoint that triggers an AWS Lambda function. The Lambda connects to an Amazon RDS (PostgreSQL) instance within a Virtual Private Cloud (VPC) to perform a simple database status check + database information gathering and then returns the result via Amazon API Gateway.
+
 This project uses Docker Compose to create a local development environment.
-This project also implements a GitHub Actions WorkFlow.
+
+This project also implements pre-commit hooks, terraform validations with trivy and a GitHub Actions WorkFlow.
 
 ## Architecture Overview
 This was all done on an AWS Free Tier Subscription account.
