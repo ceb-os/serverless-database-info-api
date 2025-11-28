@@ -21,9 +21,9 @@ data "aws_iam_policy_document" "lambda_rds_connect_policy" {
   statement {
     effect    = "Allow"
     actions   = ["rds-db:connect"]
-    resources = ["arn:aws:rds-db:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:dbuser:${aws_db_instance.nanlabs-rds.id}/${postgresql_role.nanlabs_user.name}"]
+    resources = ["arn:aws:rds-db:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:dbuser:${aws_db_instance.my-rds.id}/${postgresql_role.nanlabs_user.name}"]
   }
-  depends_on = [ aws_db_instance.nanlabs-rds, postgresql_role.nanlabs_user ]
+  depends_on = [ aws_db_instance.my-rds, postgresql_role.nanlabs_user ]
 }
 
 # para la customer managed policy

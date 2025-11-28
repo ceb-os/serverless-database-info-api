@@ -1,11 +1,11 @@
 # alta de rol para la lambda
 resource "aws_iam_role" "lambda_rds_role" {
-  name               = "nanlabs-lambda-rds-db-access-role"
+  name               = "my-lambda-rds-db-access-role"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
 }
 
 resource "aws_iam_policy" "rds-db-connect-policy" {
-  name        = "nanlabs-lambda-rds-db-access-policy"
+  name        = "my-lambda-rds-db-access-policy"
   description = "Allows Lambda to connect to RDS using IAM DB authentication"
   policy      = data.aws_iam_policy_document.lambda_rds_connect_policy.json
 }

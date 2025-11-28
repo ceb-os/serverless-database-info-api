@@ -1,8 +1,8 @@
 # modificar a aurora-serverless y multi az deployment
-resource "aws_db_instance" "nanlabs-rds" {
+resource "aws_db_instance" "my-rds" {
   allocated_storage = 10
   apply_immediately = true
-  identifier        = "nanlabs-rds"
+  identifier        = "my-rds"
   db_name           = "postgres"
   engine            = "postgres"
   engine_version    = "17.4"
@@ -23,12 +23,12 @@ resource "aws_db_instance" "nanlabs-rds" {
   vpc_security_group_ids              = [aws_security_group.rds-sg.id]
   database_insights_mode              = "standard"
   performance_insights_enabled        = false
-  db_subnet_group_name                = aws_db_subnet_group.nanlabs-rds-subnet-group.name
+  db_subnet_group_name                = aws_db_subnet_group.my-rds-subnet-group.name
   publicly_accessible                 = true
 }
 
-resource "aws_db_subnet_group" "nanlabs-rds-subnet-group" {
-  name        = "nanlabs-rds-subnet-group"
+resource "aws_db_subnet_group" "my-rds-subnet-group" {
+  name        = "my-rds-subnet-group"
   subnet_ids  = [aws_subnet.private.id, aws_subnet.public.id]
   description = "RDS subnet group for my NaNLABS VPC"
 }

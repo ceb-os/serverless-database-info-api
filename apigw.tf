@@ -1,7 +1,7 @@
 # se crea la api
 resource "aws_api_gateway_rest_api" "apigw" {
-  name        = "nanlabs-apigw-rest-api"
-  description = "API GW that will trigger the nanlabs-lambda-function"
+  name        = "my-apigw-rest-api"
+  description = "API GW that will trigger the my-lambda-function"
   endpoint_configuration {
     types = ["REGIONAL"]
   }

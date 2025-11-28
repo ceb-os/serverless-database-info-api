@@ -1,5 +1,5 @@
 resource "aws_lambda_layer_version" "psycopg2_layer" {
-  layer_name               = "nanlabs-psycopg2-layer"
+  layer_name               = "my-psycopg2-layer"
   filename                 = "./layer/psycopg2_layer.zip"
   compatible_runtimes      = ["python3.13"]
   compatible_architectures = ["x86_64", "arm64"]
@@ -7,7 +7,7 @@ resource "aws_lambda_layer_version" "psycopg2_layer" {
 
 resource "aws_lambda_function" "lambda" {
   filename      = data.archive_file.lambda_zip.output_path
-  function_name = "nanlabs-lambda-function"
+  function_name = "my-lambda-function"
   runtime       = "python3.13"
   role          = aws_iam_role.lambda_rds_role.arn
   handler       = "lambda_function.lambda_handler"
@@ -22,9 +22,9 @@ resource "aws_lambda_function" "lambda" {
 
   environment {
     variables = {
-      DB_HOST = aws_db_instance.nanlabs-rds.address
-      DB_NAME = aws_db_instance.nanlabs-rds.db_name
-      DB_USER = postgresql_role.nanlabs_user.name
+      DB_HOST = aws_db_instance.my-rds.address
+      DB_NAME = aws_db_instance.my-rds.db_name
+      DB_USER = postgresql_role.my_user.name
       REGION_NAME = var.region
     }
   }

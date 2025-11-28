@@ -19,14 +19,14 @@ provider "aws" {
     tags = {
       environment = "dev"
       owner       = "seba"
-      project     = "nanlabs-challenge"
+      project     = "my-challenge"
       billing     = "aws-freetier"
     }
   }
 }
 
 provider "postgresql" {
-  host     = aws_db_instance.nanlabs-rds.address
+  host     = aws_db_instance.my-rds.address
   port     = 5432
   username = "postgres"
   password = random_string.rds-password.result
@@ -41,8 +41,8 @@ provider "postgresql" {
 # terraform state rm postgresql_grant_role.grant_rds_iam
 
 # tuve que agregar esto porque en cada apply queria sacar el rol, no se por que
-resource "postgresql_role" "nanlabs_user" {
-  name  = "nanlabs_user"
+resource "postgresql_role" "my_user" {
+  name  = "my_user"
   login = true
   lifecycle {
     ignore_changes = [roles]
@@ -50,6 +50,6 @@ resource "postgresql_role" "nanlabs_user" {
 }
 
 resource "postgresql_grant_role" "grant_rds_iam" {
-  role       = postgresql_role.nanlabs_user.name
+  role       = postgresql_role.my_user.name
   grant_role = "rds_iam"
 } 

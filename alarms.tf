@@ -14,7 +14,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu_usage_high" {
   ok_actions                = [aws_sns_topic.rds_alarms_topic.arn]
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.nanlabs-rds.identifier
+    DBInstanceIdentifier = aws_db_instance.my-rds.identifier
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_memory_low" {
   ok_actions                = [aws_sns_topic.rds_alarms_topic.arn]
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.nanlabs-rds.identifier
+    DBInstanceIdentifier = aws_db_instance.my-rds.identifier
   }
 }
 
@@ -62,6 +62,6 @@ resource "aws_cloudwatch_metric_alarm" "rds_storage_low" {
   ok_actions                = [aws_sns_topic.rds_alarms_topic.arn]
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.nanlabs-rds.identifier
+    DBInstanceIdentifier = aws_db_instance.my-rds.identifier
   }
 }

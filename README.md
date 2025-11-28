@@ -1,4 +1,4 @@
-# 🚀 Cloud Infrastructure Engineer Challenge
+# Serverless Database Info API in AWS
 
 ## Description
 This repository contains the infrastructure and application code required to deploy an API Gateway Endpoint that triggers an AWS Lambda function. The Lambda connects to an Amazon RDS (PostgreSQL) instance within a Virtual Private Cloud (VPC) to perform a simple database status check + database information gathering and then returns the result via Amazon API Gateway.
@@ -47,9 +47,6 @@ And lastly, for Docker, I downloaded Docker Desktop: https://docs.docker.com/des
 
 
 ## Decisions
-During the challenge there were many decisions that I had to take and I'd like to detail my train of thought in this block.
-
-First of all, since I was using an AWS Free Tier account, I thought it was best to first deploy everything using the UI and making sure the solution worked fine, so I started with the VPC components.
 ### VPC
 I started with the creation of the VPC and the subnets. One would be a private subnet and the other one a public subnet.
 This was a great learning point for me since I never had to deploy a VPC config from scratch. All the places I've worked at had already solved that issue so even though I understood the theory of it, I never had the chance to do it. Creating the Internet Gateway and the NAT Gateway for the public subnet, and then associating the NAT route table to the private subnet was super informative.
